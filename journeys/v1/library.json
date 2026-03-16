@@ -1,0 +1,1068 @@
+{
+  "id": "jrn_positive_emotions_v1",
+  "version": "1.0.0",
+  "name": "Positive Emotions",
+  "description": "Uncover the power of positive emotions, with simple skills you can use everyday.",
+  "entry": "n_intro_welcome",
+  "metadata": {
+    "created_at": "2026-03-16T00:00:00Z",
+    "updated_at": "2026-03-16T00:00:00Z",
+    "author": "Tatjana Karaman",
+    "clinical_ref": "Positive-Psychology-Fredrickson-2001-Broaden-Build",
+    "duration_weeks": 6,
+    "tags": ["positive-psychology", "wellbeing", "emotions", "skills"]
+  },
+  "schedule": {
+    "total_weeks": 6,
+    "sessions_per_week": 3,
+    "preferred_spacing_hours": 48
+  },
+
+  "nodes": {
+
+    "_comment_week1": "══════════════════════════════════════════════════════════",
+
+    "n_intro_welcome": {
+      "id": "n_intro_welcome",
+      "type": "intervention",
+      "label": "Welcome — Introduction to Positive Emotions",
+      "week": 1, "session": 1,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800",
+            "alt": "Sunlight breaking through tree canopy — a feeling of warmth and possibility"
+          },
+          {
+            "type": "text",
+            "body": "# Welcome to Positive Emotions\n\nOver the next **6 weeks**, you'll explore a set of simple, evidence-based skills designed to help you notice, build, and sustain positive emotions in your everyday life.\n\nThis programme is grounded in **positive psychology** — a field of research showing that positive emotions do far more than simply feel good. They broaden your thinking, build lasting resources, and over time can genuinely transform how you experience the world.\n\nThere's nothing to get right or wrong here. Just curiosity, practice, and a little kindness toward yourself."
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "READY",    "label": "I'm ready — let's begin" },
+          { "value": "TELL_MORE","label": "Tell me more first" },
+          { "value": "NOT_NOW",  "label": "Come back to this later" }
+        ]
+      },
+      "edges": [
+        { "target": "n_intro_what_are",    "condition": { "on": "response_match", "value": "READY" },     "priority": 1 },
+        { "target": "n_intro_science",     "condition": { "on": "response_match", "value": "TELL_MORE" }, "priority": 1 },
+        { "target": "n_end_deferred",      "condition": { "on": "response_match", "value": "NOT_NOW" },   "priority": 1 },
+        { "target": "n_end_deferred",      "condition": { "on": "timeout", "after_seconds": 172800 },     "priority": 9 }
+      ]
+    },
+
+    "n_intro_science": {
+      "id": "n_intro_science",
+      "type": "intervention",
+      "label": "The Science Behind Positive Emotions",
+      "week": 1, "session": 1,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800",
+            "alt": "Neural connections — abstract illustration of the brain and emotion"
+          },
+          {
+            "type": "text",
+            "body": "## The Broaden-and-Build Theory\n\nResearcher **Barbara Fredrickson** found something remarkable: positive emotions don't just feel pleasant — they literally *broaden* your awareness and *build* lasting psychological, social, and physical resources.\n\nWhen you experience joy, curiosity, love, or awe:\n- Your thinking becomes more flexible and creative\n- You're more open to new ideas and connections\n- You build resilience that carries you through harder times\n- Your physical health measurably improves over time\n\nThe effect is cumulative. Small, frequent positive emotions — not dramatic highs — are what move the needle."
+          },
+          {
+            "type": "link",
+            "url": "https://healthos.app/learn/broaden-build",
+            "label": "Read more about Broaden-and-Build"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "CONTINUE", "label": "That makes sense — let's continue" }
+        ]
+      },
+      "edges": [
+        { "target": "n_intro_what_are", "condition": { "on": "response_match", "value": "CONTINUE" }, "priority": 1 }
+      ]
+    },
+
+    "n_intro_what_are": {
+      "id": "n_intro_what_are",
+      "type": "intervention",
+      "label": "What Counts as a Positive Emotion?",
+      "week": 1, "session": 1,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "text",
+            "body": "## Ten Forms of Positivity\n\nPositive emotions come in many flavours — not just happiness. Research identifies **ten core positive emotions**:\n\n**Joy** • **Gratitude** • **Serenity** • **Interest** • **Hope** • **Pride** • **Amusement** • **Inspiration** • **Awe** • **Love**\n\nAll of them count. All of them have value. You don't have to feel 'happy' to benefit from this programme."
+          },
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800",
+            "alt": "People laughing together at a table — warmth and connection"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "NEXT", "label": "What emotion do I feel most often?" }
+        ]
+      },
+      "edges": [
+        { "target": "n_intro_baseline", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }
+      ]
+    },
+
+    "n_intro_baseline": {
+      "id": "n_intro_baseline",
+      "type": "intervention",
+      "label": "Your Starting Point",
+      "week": 1, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "Before we begin, let's get a baseline reading.\n\n**In the past week, how often have you experienced positive emotions overall?**\n\n(Think about moments of joy, interest, warmth, amusement, or calm — however small.)"
+      },
+      "response": {
+        "kind": "scale",
+        "min": 0, "max": 10,
+        "labels": { "0": "Rarely / never", "5": "Sometimes", "10": "Very often" }
+      },
+      "edges": [
+        { "target": "n_intro_commitment", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }
+      ]
+    },
+
+    "n_intro_commitment": {
+      "id": "n_intro_commitment",
+      "type": "intervention",
+      "label": "Making a Commitment",
+      "week": 1, "session": 1,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "text",
+            "body": "## Your 6-Week Journey\n\nHere's what's ahead:\n\n**Week 1** — Introduction & Noticing Positive Events\n**Week 2** — Savouring & Gratitude\n**Week 3** — Mindfulness & Positive Reappraisal\n**Week 4** — Self-Compassion & Personal Strengths\n**Week 5** — Attainable Goals\n**Week 6** — Bringing it All Together\n\nYou'll receive a short session every couple of days. Each one takes **5–10 minutes**. The skills build on each other, so regular practice matters more than perfection.\n\nAre you ready to commit to this journey?"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "COMMIT", "label": "Yes — I'm committing to this" },
+          { "value": "TRY",    "label": "I'll give it my best try" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill1_intro", "condition": { "on": "response_match", "value": "COMMIT" }, "priority": 1 },
+        { "target": "n_skill1_intro", "condition": { "on": "response_match", "value": "TRY" },    "priority": 1 }
+      ]
+    },
+
+    "_comment_week1_skill1": "── Skill 1: Noticing Positive Events ──────────────────",
+
+    "n_skill1_intro": {
+      "id": "n_skill1_intro",
+      "type": "intervention",
+      "label": "Skill 1: Noticing Positive Events — Introduction",
+      "week": 1, "session": 2,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800",
+            "alt": "Person pausing on a walk, looking at flowers — noticing the small things"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 1: Noticing Positive Events\n\nOur brains have a built-in negativity bias — we're wired to scan for threats and problems. This was useful for our ancestors, but today it means positive moments often slip by unnoticed.\n\n**The first skill is deceptively simple: notice positive events as they happen.**\n\nNot grand achievements — small things count most. The smell of coffee. A moment of sunshine. A kind word from a colleague. A song you love on the radio.\n\nWhen you *consciously notice* these moments, you interrupt the negativity autopilot and begin training your brain toward positivity."
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "NEXT", "label": "How do I practice this?" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill1_practice", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill1_practice": {
+      "id": "n_skill1_practice",
+      "type": "intervention",
+      "label": "Skill 1: The Three Good Things Practice",
+      "week": 1, "session": 2,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "text",
+            "body": "## The Three Good Things\n\nEach evening this week, pause for 2 minutes and recall **three positive events** from your day.\n\nThey don't have to be significant. Examples:\n- *\"A colleague smiled when they saw me\"*\n- *\"My tea was the perfect temperature\"*\n- *\"I found a car parking space easily\"*\n\nWrite them down if you can. The act of writing deepens the noticing.\n\nRight now — try it for today. What's **one positive thing** that has happened so far today, however small?"
+          }
+        ]
+      },
+      "response": { "kind": "text", "maxLength": 300, "placeholder": "Something positive that happened today..." },
+      "edges": [
+        { "target": "n_skill1_reflection", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill1_reflection": {
+      "id": "n_skill1_reflection",
+      "type": "intervention",
+      "label": "Skill 1: Reflection on Noticing",
+      "week": 1, "session": 2,
+      "content": {
+        "type": "text",
+        "body": "Notice what happened when you brought that moment to mind.\n\nEven just *describing* a positive event tends to generate a small echo of the positive feeling itself. That's the noticing skill at work.\n\n**Your practice this week:** Each day, try to spot and briefly name three positive moments — morning, afternoon, and evening. You might keep a small notebook or use the notes app on your phone.\n\nCome back in two days for your next session."
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_skill1_checkin", "condition": { "on": "consumed" },                      "priority": 1 },
+        { "target": "n_skill1_checkin", "condition": { "on": "timeout", "after_seconds": 300 }, "priority": 2 }
+      ]
+    },
+
+    "n_skill1_checkin": {
+      "id": "n_skill1_checkin",
+      "type": "intervention",
+      "label": "Skill 1: Mid-Week Check-In",
+      "week": 1, "session": 3,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1471922694854-ff1b63b20054?w=800",
+            "alt": "Morning light on a journal and coffee cup — a moment of reflection"
+          },
+          {
+            "type": "text",
+            "body": "## Checking In: Noticing Positive Events\n\nYou've had a couple of days to practice noticing positive moments.\n\nHow has it been going? Has noticing small positive moments felt natural, difficult, or somewhere in between?"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "EASY",       "label": "Easier than I expected" },
+          { "value": "MIXED",      "label": "Some days easier than others" },
+          { "value": "HARD",       "label": "I've found it quite difficult" },
+          { "value": "FORGOT",     "label": "I forgot to practice" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill1_wrap",       "condition": { "on": "response_match", "value": ["EASY", "MIXED"] }, "priority": 1 },
+        { "target": "n_skill1_support",    "condition": { "on": "response_match", "value": ["HARD", "FORGOT"] },"priority": 1 }
+      ]
+    },
+
+    "n_skill1_support": {
+      "id": "n_skill1_support",
+      "type": "intervention",
+      "label": "Skill 1: Support for Difficulty",
+      "week": 1, "session": 3,
+      "content": {
+        "type": "text",
+        "body": "That's completely understandable — and more common than you might think.\n\nWhen life feels heavy, or when we're stressed, the negativity bias is even stronger. Noticing positives can feel almost *uncomfortable*, like it's not allowed.\n\n**A gentler approach:** Instead of three things per day, just try *one* — and make it as small as you like. A comfortable chair. A breath of fresh air. The fact that you opened this app.\n\nThat single noticing still counts. It still works. Small is fine."
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "TRY_AGAIN", "label": "I'll try the gentler approach" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill1_wrap", "condition": { "on": "response_match", "value": "TRY_AGAIN" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill1_wrap": {
+      "id": "n_skill1_wrap",
+      "type": "intervention",
+      "label": "Skill 1: Wrap-Up",
+      "week": 1, "session": 3,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "text",
+            "body": "## Skill 1 Complete ✓\n\nYou've taken the first step — training your attention toward the positive moments already present in your life.\n\nKeep this skill running in the background as you continue. The noticing never stops being valuable.\n\nNext up: **Skill 2 — Savouring**. You'll learn how to *linger* in positive moments and extract their full value."
+          }
+        ]
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_skill2_intro", "condition": { "on": "consumed" },                       "priority": 1 },
+        { "target": "n_skill2_intro", "condition": { "on": "timeout", "after_seconds": 300 },  "priority": 2 }
+      ]
+    },
+
+    "_comment_week2_skill2": "── Skill 2: Savouring ──────────────────────────────────",
+
+    "n_skill2_intro": {
+      "id": "n_skill2_intro",
+      "type": "intervention",
+      "label": "Skill 2: Savouring — Introduction",
+      "week": 2, "session": 1,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800",
+            "alt": "Hands wrapped around a warm mug — savouring a simple pleasure"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 2: Savouring\n\nNoticing a positive moment is the first step. **Savouring** is the next: slowing down to fully absorb and enjoy the experience as it happens.\n\nWe often rush through pleasant moments, always moving on to the next thing. Savouring is the deliberate act of lingering — mentally and physically staying *in* the positive experience a little longer.\n\nResearch shows that people who savour positive events report significantly higher wellbeing — not because more good things happen to them, but because they extract more value from what does."
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "HOW", "label": "How do I savour?" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill2_techniques", "condition": { "on": "response_match", "value": "HOW" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill2_techniques": {
+      "id": "n_skill2_techniques",
+      "type": "intervention",
+      "label": "Skill 2: Savouring Techniques",
+      "week": 2, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "## Four Ways to Savour\n\n**1. Slow down** — Physically slow your pace. Eat more slowly. Take an extra breath before moving on.\n\n**2. Share it** — Tell someone about a positive experience while it's fresh. Sharing amplifies the emotion.\n\n**3. Absorb it through your senses** — What can you see, hear, feel, smell? Bring your senses into the moment fully.\n\n**4. Take a mental photograph** — Pause and consciously 'snapshot' the moment. Tell yourself: *I want to remember this.*\n\nThese techniques work for big moments (a celebration, a beautiful view) and tiny ones (a good song, a warm shower)."
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "PRACTICE", "label": "Try a savouring exercise now" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill2_exercise", "condition": { "on": "response_match", "value": "PRACTICE" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill2_exercise": {
+      "id": "n_skill2_exercise",
+      "type": "intervention",
+      "label": "Skill 2: Savouring Exercise",
+      "week": 2, "session": 1,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800",
+            "alt": "Sunlit forest path — an invitation to be present"
+          },
+          {
+            "type": "text",
+            "body": "## Savouring Exercise: A Positive Memory\n\nBring to mind a positive memory from the **past week** — a moment that felt good, however briefly.\n\nClose your eyes if you can. Re-enter that moment. What did you see? What did you hear? What did your body feel like?\n\nSpend 60 seconds with it. Let the positive feeling arise naturally.\n\n---\n\nNow describe what you experienced:"
+          }
+        ]
+      },
+      "response": { "kind": "text", "maxLength": 400, "placeholder": "The memory I chose, and what it felt like to return to it..." },
+      "edges": [
+        { "target": "n_skill2_checkin", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill2_checkin": {
+      "id": "n_skill2_checkin",
+      "type": "intervention",
+      "label": "Skill 2: Check-In",
+      "week": 2, "session": 2,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "text",
+        "body": "## Checking In: Savouring\n\nHave you had a chance to try savouring in daily life — slowing down, absorbing through your senses, or taking a mental photograph?\n\nHow present were you able to be?"
+      },
+      "response": {
+        "kind": "scale",
+        "min": 1, "max": 5,
+        "labels": { "1": "Not very present", "3": "Moderately present", "5": "Very present" }
+      },
+      "edges": [
+        { "target": "n_skill2_wrap", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill2_wrap": {
+      "id": "n_skill2_wrap",
+      "type": "intervention",
+      "label": "Skill 2: Wrap-Up",
+      "week": 2, "session": 2,
+      "content": {
+        "type": "text",
+        "body": "## Skill 2 Complete ✓\n\nSavouring is a skill that grows with practice. Even a few seconds of genuine absorption can extend the positive emotional value of a moment significantly.\n\nContinue combining **noticing** (Skill 1) with **savouring** (Skill 2) as you move through your days.\n\nNext: **Skill 3 — Gratitude.** One of the most researched and powerful positive psychology tools."
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_skill3_intro", "condition": { "on": "consumed" }, "priority": 1 },
+        { "target": "n_skill3_intro", "condition": { "on": "timeout", "after_seconds": 300 }, "priority": 2 }
+      ]
+    },
+
+    "_comment_week2_skill3": "── Skill 3: Gratitude ──────────────────────────────────",
+
+    "n_skill3_intro": {
+      "id": "n_skill3_intro",
+      "type": "intervention",
+      "label": "Skill 3: Gratitude — Introduction",
+      "week": 2, "session": 3,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800",
+            "alt": "Two people holding hands — warmth and appreciation"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 3: Gratitude\n\n**Gratitude** is the emotion of appreciating what is good in your life — recognising gifts, benefits, and kindnesses, whether from people, circumstances, or simply the fact of being alive.\n\nDecades of research show gratitude is one of the most powerful wellbeing practices available:\n\n- People who regularly practice gratitude report **25% higher life satisfaction**\n- Gratitude strengthens relationships and social bonds\n- It reduces envy, resentment, and depressive rumination\n- It shifts attention from what's lacking to what's present\n\nImportantly, gratitude is not about toxic positivity or ignoring difficulties. It's about *balance* — deliberately giving attention to what's good, alongside acknowledging what's hard."
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "LETTER", "label": "Try the Gratitude Letter" },
+          { "value": "JOURNAL","label": "Try Gratitude Journalling" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill3_letter",  "condition": { "on": "response_match", "value": "LETTER" },  "priority": 1 },
+        { "target": "n_skill3_journal", "condition": { "on": "response_match", "value": "JOURNAL" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill3_letter": {
+      "id": "n_skill3_letter",
+      "type": "intervention",
+      "label": "Skill 3: Gratitude Letter",
+      "week": 2, "session": 3,
+      "content": {
+        "type": "text",
+        "body": "## The Gratitude Letter\n\nThink of someone who has positively influenced your life — a friend, family member, teacher, colleague, or even someone you've never met (an author, a public figure).\n\nWrite a short letter to them expressing your appreciation. Be specific: what did they do? How did it affect you? What does their contribution mean to you now?\n\nYou don't have to send it (though research shows *delivering* a gratitude letter creates even stronger effects). The act of writing is what matters."
+      },
+      "response": { "kind": "text", "maxLength": 1000, "placeholder": "Dear..." },
+      "edges": [
+        { "target": "n_skill3_reflection", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill3_journal": {
+      "id": "n_skill3_journal",
+      "type": "intervention",
+      "label": "Skill 3: Gratitude Journal",
+      "week": 2, "session": 3,
+      "content": {
+        "type": "text",
+        "body": "## Gratitude Journalling\n\nList **five things** you are grateful for right now. They can be large or small — a person, a possession, a quality you have, something in nature, something from today.\n\nFor each one, add a sentence about *why* it matters to you. The 'why' is what transforms a list into genuine gratitude."
+      },
+      "response": { "kind": "text", "maxLength": 800, "placeholder": "1. I'm grateful for... because...\n2.\n3.\n4.\n5." },
+      "edges": [
+        { "target": "n_skill3_reflection", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill3_reflection": {
+      "id": "n_skill3_reflection",
+      "type": "intervention",
+      "label": "Skill 3: Gratitude Reflection",
+      "week": 2, "session": 3,
+      "content": {
+        "type": "text",
+        "body": "How did that feel?\n\nGratitude often surfaces feelings of warmth, connection, and a quieter sense of abundance. Sometimes it also surfaces bittersweet feelings — missing someone, or realising how much something means.\n\nAll of these responses are valid and part of the practice.\n\n**This week:** Try to spend two minutes each morning identifying one thing you're genuinely grateful for — and why."
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "NEXT", "label": "I'll carry gratitude forward" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill4_intro", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }
+      ]
+    },
+
+    "_comment_week3_skill4": "── Skill 4: Mindfulness ────────────────────────────────",
+
+    "n_skill4_intro": {
+      "id": "n_skill4_intro",
+      "type": "intervention",
+      "label": "Skill 4: Mindfulness — Introduction",
+      "week": 3, "session": 1,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800",
+            "alt": "Person meditating outdoors at sunrise — peaceful presence"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 4: Mindfulness\n\n**Mindfulness** is the practice of paying deliberate attention to the present moment, with openness and without judgement.\n\nIt's deeply connected to positive emotions: when we're lost in rumination about the past or worry about the future, we miss the positive moments happening right now. Mindfulness brings us back.\n\nYou don't need to meditate for an hour or empty your mind. Research shows that even **brief, regular mindfulness practice** reduces stress, improves emotional regulation, and creates more space for positive experience.\n\n*Note: Mindfulness builds on the Noticing and Savouring skills you've already developed — it's the deeper version of the same attention.*"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "EXERCISE", "label": "Try a brief mindfulness exercise" },
+          { "value": "LEARN_MORE", "label": "Tell me more about how it works" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill4_exercise",  "condition": { "on": "response_match", "value": "EXERCISE" },   "priority": 1 },
+        { "target": "n_skill4_howworks",  "condition": { "on": "response_match", "value": "LEARN_MORE" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill4_howworks": {
+      "id": "n_skill4_howworks",
+      "type": "intervention",
+      "label": "Skill 4: How Mindfulness Works",
+      "week": 3, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "## How Mindfulness Works\n\nOur minds have a default mode: wandering. Studies suggest we spend **nearly half our waking hours** thinking about something other than what we're doing — and this mind-wandering correlates strongly with lower happiness.\n\nMindfulness works by training the 'noticing' muscle — the ability to notice that your mind has wandered, and gently return your attention to the present.\n\nThe returning is the practice. You're not failing when your mind wanders — that's normal. The skill is in the gentle return, again and again.\n\nOver time, this builds a quieter, more spacious quality of mind — less reactivity, more capacity to experience what's actually here."
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "EXERCISE", "label": "Try the exercise now" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill4_exercise", "condition": { "on": "response_match", "value": "EXERCISE" }, "priority": 1 }
+      ]
+    },
+
+    "n_skill4_exercise": {
+      "id": "n_skill4_exercise",
+      "type": "intervention",
+      "label": "Skill 4: Mindful Breathing Exercise",
+      "week": 3, "session": 1,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=800",
+            "alt": "Gentle waves on a beach — rhythm and calm"
+          },
+          {
+            "type": "text",
+            "body": "## 3-Minute Mindful Breathing\n\nFind a comfortable position. You can close your eyes, or soften your gaze downward.\n\n**For the next 3 minutes:**\n\n1. Bring your attention to your breath — the physical sensation of air moving in and out\n2. When your mind wanders (it will), gently notice *'thinking'* and return to the breath\n3. No need to change your breathing — just observe it\n\nTake your time. Return here when you're done."
+          },
+          {
+            "type": "link",
+            "url": "https://healthos.app/audio/mindful-breathing-3min",
+            "label": "🎧 Listen to guided audio (3 min)"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "DONE_EASY",  "label": "Done — felt calm" },
+          { "value": "DONE_HARD",  "label": "Done — mind was very busy" },
+          { "value": "SKIP",       "label": "Skipped for now" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill4_debrief_calm", "condition": { "on": "response_match", "value": "DONE_EASY" }, "priority": 1 },
+        { "target": "n_skill4_debrief_busy", "condition": { "on": "response_match", "value": "DONE_HARD" }, "priority": 1 },
+        { "target": "n_skill4_wrap",         "condition": { "on": "response_match", "value": "SKIP" },      "priority": 1 }
+      ]
+    },
+
+    "n_skill4_debrief_calm": {
+      "id": "n_skill4_debrief_calm",
+      "type": "intervention",
+      "label": "Skill 4: Debrief — Calm",
+      "week": 3, "session": 1,
+      "content": { "type": "text", "body": "That sense of calm is the space mindfulness creates. It doesn't mean your mind was empty — it means you returned to the present each time you wandered, and that returning created room for ease.\n\n**Practice this week:** 3 minutes of mindful breathing each morning. It's a small investment with compounding returns." },
+      "response": { "kind": "choice", "options": [{ "value": "NEXT", "label": "I'll practice this week" }] },
+      "edges": [{ "target": "n_skill4_wrap", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }]
+    },
+
+    "n_skill4_debrief_busy": {
+      "id": "n_skill4_debrief_busy",
+      "type": "intervention",
+      "label": "Skill 4: Debrief — Busy Mind",
+      "week": 3, "session": 1,
+      "content": { "type": "text", "body": "A busy mind during mindfulness is not failure — it's completely normal, and actually a sign you're doing it right by *noticing* the busyness.\n\nEvery time you noticed your mind had wandered and returned to the breath, that *was* the practice. Even if it happened twenty times.\n\n**This week:** Start with just 1 minute rather than 3. Short and genuine beats long and frustrated." },
+      "response": { "kind": "choice", "options": [{ "value": "NEXT", "label": "I'll try the shorter version" }] },
+      "edges": [{ "target": "n_skill4_wrap", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }]
+    },
+
+    "n_skill4_wrap": {
+      "id": "n_skill4_wrap",
+      "type": "intervention",
+      "label": "Skill 4: Wrap-Up",
+      "week": 3, "session": 2,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "text",
+        "body": "## Skill 4 Complete ✓\n\nMindfulness is now part of your toolkit — the skill of returning to *now*, where positive emotions live.\n\nCombine it with noticing and savouring for maximum effect: be present (mindfulness) → spot something positive (noticing) → linger in it (savouring).\n\nNext: **Skill 5 — Positive Reappraisal.** You'll learn how to find genuine meaning or benefit even in difficult situations."
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_skill5_intro", "condition": { "on": "consumed" }, "priority": 1 },
+        { "target": "n_skill5_intro", "condition": { "on": "timeout", "after_seconds": 300 }, "priority": 2 }
+      ]
+    },
+
+    "_comment_week3_skill5": "── Skill 5: Positive Reappraisal ──────────────────────",
+
+    "n_skill5_intro": {
+      "id": "n_skill5_intro",
+      "type": "intervention",
+      "label": "Skill 5: Positive Reappraisal — Introduction",
+      "week": 3, "session": 3,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800",
+            "alt": "Mountain path through clouds — perspective and the view beyond difficulty"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 5: Positive Reappraisal\n\n**Positive reappraisal** means finding genuine meaning, benefit, or silver linings in difficult situations — not by denying that something was hard, but by also asking: *what has this given me? What can I learn? How might I see this differently?*\n\nThis is not toxic positivity. It doesn't require pretending problems don't exist. It's about holding *both* truths: this was difficult *and* something valuable came from it.\n\nResearch shows positive reappraisal is one of the most effective emotion regulation strategies available — used by resilient people across cultures and life circumstances."
+          }
+        ]
+      },
+      "response": { "kind": "choice", "options": [{ "value": "NEXT", "label": "How does it work in practice?" }] },
+      "edges": [{ "target": "n_skill5_practice", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }]
+    },
+
+    "n_skill5_practice": {
+      "id": "n_skill5_practice",
+      "type": "intervention",
+      "label": "Skill 5: Reappraisal Practice",
+      "week": 3, "session": 3,
+      "content": {
+        "type": "text",
+        "body": "## Reappraising a Difficult Situation\n\nThink of a **moderately difficult situation** from the past month — something that caused stress, frustration, or disappointment. (Choose something manageable, not your most painful experience.)\n\nNow ask yourself honestly:\n\n- What did I learn from this?\n- How might it have made me stronger or wiser?\n- Did anything unexpectedly good come from it?\n- How might I see this situation in 5 years?\n- What would I tell a good friend who experienced the same thing?\n\nWrite your reappraisal below:"
+      },
+      "response": { "kind": "text", "maxLength": 600, "placeholder": "The situation was... and looking at it differently, I can see..." },
+      "edges": [{ "target": "n_skill5_wrap", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_skill5_wrap": {
+      "id": "n_skill5_wrap",
+      "type": "intervention",
+      "label": "Skill 5: Wrap-Up",
+      "week": 3, "session": 3,
+      "content": {
+        "type": "text",
+        "body": "## Skill 5 Complete ✓\n\nReappraisal takes practice — the first attempts can feel forced. But like any mental skill, it becomes more natural and more genuine over time.\n\nThis week, when you encounter a frustration or setback, try pausing and asking: *'Is there another way to see this?'*\n\nNext: **Skill 6 — Self-Compassion.** Perhaps the most transformative skill for many people — treating yourself with the kindness you'd offer a friend."
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_skill6_intro", "condition": { "on": "consumed" }, "priority": 1 },
+        { "target": "n_skill6_intro", "condition": { "on": "timeout", "after_seconds": 300 }, "priority": 2 }
+      ]
+    },
+
+    "_comment_week4_skill6": "── Skill 6: Self-Compassion ────────────────────────────",
+
+    "n_skill6_intro": {
+      "id": "n_skill6_intro",
+      "type": "intervention",
+      "label": "Skill 6: Self-Compassion — Introduction",
+      "week": 4, "session": 1,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+            "alt": "Person sitting peacefully with hands on heart — self-compassion"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 6: Self-Compassion\n\n**Self-compassion** — as defined by researcher Kristin Neff — has three components:\n\n1. **Self-kindness**: treating yourself with warmth and understanding when you suffer or fail, rather than harsh self-criticism\n2. **Common humanity**: recognising that suffering and personal inadequacy are part of the shared human experience\n3. **Mindful awareness**: holding painful thoughts and feelings in balanced awareness rather than over-identifying with them\n\nSelf-compassion is consistently linked to greater emotional resilience, lower anxiety and depression, stronger positive emotions, and better relationships.\n\n*It is not weakness, self-pity, or lowering your standards. Research shows self-compassionate people are more motivated, not less.*"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "MISCONCEPTION", "label": "I worry it means going easy on myself" },
+          { "value": "READY",         "label": "That resonates — let's practice" }
+        ]
+      },
+      "edges": [
+        { "target": "n_skill6_misconception", "condition": { "on": "response_match", "value": "MISCONCEPTION" }, "priority": 1 },
+        { "target": "n_skill6_exercise",      "condition": { "on": "response_match", "value": "READY" },         "priority": 1 }
+      ]
+    },
+
+    "n_skill6_misconception": {
+      "id": "n_skill6_misconception",
+      "type": "intervention",
+      "label": "Skill 6: Addressing the Misconception",
+      "week": 4, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "That's one of the most common concerns — and the research directly addresses it.\n\nStudies consistently find that self-compassionate people actually have **higher personal standards** and are **more accountable** for their mistakes — because they can acknowledge failure without the defensive self-protection that harsh self-criticism triggers.\n\nHarsh self-criticism often leads to avoidance, shame, and paralysis. Self-compassion allows you to say: *'I made a mistake. That's human. What can I learn and do differently?'*\n\nThat's a more effective path to growth — not a softer one."
+      },
+      "response": { "kind": "choice", "options": [{ "value": "READY", "label": "That makes sense — let's practice" }] },
+      "edges": [{ "target": "n_skill6_exercise", "condition": { "on": "response_match", "value": "READY" }, "priority": 1 }]
+    },
+
+    "n_skill6_exercise": {
+      "id": "n_skill6_exercise",
+      "type": "intervention",
+      "label": "Skill 6: Self-Compassion Letter",
+      "week": 4, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "## The Self-Compassion Letter\n\nThink of something about yourself that makes you feel inadequate, ashamed, or that you're 'not enough' — a flaw, a failure, an ongoing struggle.\n\nNow imagine a wise, caring friend who knows and accepts you fully. They understand your history, your struggles, and your humanity. They want you to be well.\n\n**Write a short letter to yourself from that friend's perspective.** What would they say about this struggle? How would they express understanding, acceptance, and encouragement without minimising your difficulty or your growth?"
+      },
+      "response": { "kind": "text", "maxLength": 800, "placeholder": "Dear [your name]..." },
+      "edges": [{ "target": "n_skill6_wrap", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_skill6_wrap": {
+      "id": "n_skill6_wrap",
+      "type": "intervention",
+      "label": "Skill 6: Wrap-Up",
+      "week": 4, "session": 2,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800",
+            "alt": "Warm sunlight on open palms — openness and self-acceptance"
+          },
+          {
+            "type": "text",
+            "body": "## Skill 6 Complete ✓\n\nSelf-compassion is a lifelong practice. The inner critic doesn't disappear — but over time you can learn to notice it, name it, and choose a kinder response.\n\nA simple phrase to carry with you: *'This is a moment of suffering. Suffering is part of life. May I be kind to myself in this moment.'*\n\nNext: **Skill 7 — Personal Strengths.** You'll identify your core character strengths and find new ways to use them."
+          }
+        ]
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_skill7_intro", "condition": { "on": "consumed" }, "priority": 1 },
+        { "target": "n_skill7_intro", "condition": { "on": "timeout", "after_seconds": 300 }, "priority": 2 }
+      ]
+    },
+
+    "_comment_week4_skill7": "── Skill 7: Personal Strengths ─────────────────────────",
+
+    "n_skill7_intro": {
+      "id": "n_skill7_intro",
+      "type": "intervention",
+      "label": "Skill 7: Personal Strengths — Introduction",
+      "week": 4, "session": 3,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=800",
+            "alt": "Person standing confidently on a summit — awareness of one's own strengths"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 7: Personal Strengths\n\nPositive psychology identifies **24 universal character strengths** — qualities like creativity, curiosity, kindness, perseverance, leadership, and gratitude — which each person expresses in a unique combination.\n\nResearch by Martin Seligman and Christopher Peterson shows that using your **signature strengths** in new ways is one of the most reliable ways to increase wellbeing.\n\nUsing our strengths:\n- Creates a sense of flow and engagement\n- Generates positive emotions and energy\n- Builds confidence and authentic self-knowledge\n- Improves performance at work and in relationships\n\nThe key is to *know* your strengths and then *actively deploy* them."
+          }
+        ]
+      },
+      "response": { "kind": "choice", "options": [{ "value": "IDENTIFY", "label": "Identify my strengths" }] },
+      "edges": [{ "target": "n_skill7_identify", "condition": { "on": "response_match", "value": "IDENTIFY" }, "priority": 1 }]
+    },
+
+    "n_skill7_identify": {
+      "id": "n_skill7_identify",
+      "type": "intervention",
+      "label": "Skill 7: Identify Your Strengths",
+      "week": 4, "session": 3,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "text",
+            "body": "## Your Top Strengths\n\nFrom the list of **24 VIA Character Strengths**, which three feel most like the *real you* — qualities that feel natural, energising, and authentic when you use them?\n\n**Wisdom**: Creativity • Curiosity • Judgement • Love of Learning • Perspective\n**Humanity**: Love • Kindness • Social Intelligence\n**Justice**: Teamwork • Fairness • Leadership\n**Courage**: Bravery • Perseverance • Honesty • Zest\n**Temperance**: Forgiveness • Humility • Prudence • Self-Regulation\n**Transcendence**: Appreciation of Beauty • Gratitude • Hope • Humour • Spirituality\n\nFor a full validated assessment, visit:"
+          },
+          {
+            "type": "link",
+            "url": "https://www.viacharacter.org/survey/account/register",
+            "label": "Take the free VIA Character Strengths Survey"
+          },
+          { "type": "text", "body": "For now, which three strengths feel most like *you*?" }
+        ]
+      },
+      "response": { "kind": "text", "maxLength": 300, "placeholder": "My three signature strengths are..." },
+      "edges": [{ "target": "n_skill7_deploy", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_skill7_deploy": {
+      "id": "n_skill7_deploy",
+      "type": "intervention",
+      "label": "Skill 7: Using Strengths in New Ways",
+      "week": 4, "session": 3,
+      "content": {
+        "type": "text",
+        "body": "## Using Strengths in New Ways\n\nThe research is specific: it's not just *using* strengths that boosts wellbeing — it's using them **in new ways**.\n\nThink of one of your signature strengths. Now think of a situation this week where you could use it differently or in an unexpected context:\n\n- If you're **curious**: explore a topic completely outside your usual interests\n- If you're **kind**: offer help to someone you don't usually help\n- If you're **creative**: apply your creativity to a practical problem at work\n- If you're **a leader**: step up in a group context where you'd normally stay back\n\nDescribe one concrete plan — your strength and how you'll use it differently this week:"
+      },
+      "response": { "kind": "text", "maxLength": 400, "placeholder": "This week I will use my strength of [X] by..." },
+      "edges": [{ "target": "n_skill7_wrap", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_skill7_wrap": {
+      "id": "n_skill7_wrap",
+      "type": "intervention",
+      "label": "Skill 7: Wrap-Up",
+      "week": 5, "session": 1,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "text",
+        "body": "## Skill 7 Complete ✓\n\nYour strengths are a renewable resource. The more deliberately you draw on them, the more natural it becomes — and the more positive emotion flows as a result.\n\nNext: **Skill 8 — Attainable Goals.** You'll learn how to set meaningful goals that generate sustained positive emotion through the journey toward them, not just at the finish line."
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_skill8_intro", "condition": { "on": "consumed" }, "priority": 1 },
+        { "target": "n_skill8_intro", "condition": { "on": "timeout", "after_seconds": 300 }, "priority": 2 }
+      ]
+    },
+
+    "_comment_week5_skill8": "── Skill 8: Attainable Goals ───────────────────────────",
+
+    "n_skill8_intro": {
+      "id": "n_skill8_intro",
+      "type": "intervention",
+      "label": "Skill 8: Attainable Goals — Introduction",
+      "week": 5, "session": 1,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800",
+            "alt": "A path leading toward the horizon — direction and forward movement"
+          },
+          {
+            "type": "text",
+            "body": "# Skill 8: Attainable Goals\n\nGoals generate positive emotions — not just when we achieve them, but throughout the process of working toward them. **Hope, interest, pride, and joy** all arise naturally from meaningful goal pursuit.\n\nBut the *type* of goal matters enormously:\n\n- **Approach goals** (moving toward something positive) generate more sustained positive emotion than *avoidance goals* (escaping something negative)\n- **Intrinsic goals** (driven by personal meaning) generate more wellbeing than *extrinsic goals* (driven by appearance or others' approval)\n- **Attainable goals** — challenging enough to engage you, achievable enough to make genuine progress — generate the most sustained positive emotion\n\nThe sweet spot is a goal that stretches you without breaking you."
+          }
+        ]
+      },
+      "response": { "kind": "choice", "options": [{ "value": "NEXT", "label": "Help me set a goal" }] },
+      "edges": [{ "target": "n_skill8_set", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }]
+    },
+
+    "n_skill8_set": {
+      "id": "n_skill8_set",
+      "type": "intervention",
+      "label": "Skill 8: Setting Your Goal",
+      "week": 5, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "## Your Attainable Goal\n\nThink about an area of your life where you'd like to move forward over the next 4–8 weeks — something personally meaningful to you.\n\nApply these tests:\n✅ It moves *toward* something I value (not just away from a problem)\n✅ I genuinely care about it — it's *my* goal, not someone else's\n✅ I can make meaningful progress with realistic effort\n✅ I can break it into smaller weekly steps\n\n**Describe your goal — what it is, why it matters to you, and one small first step:**"
+      },
+      "response": { "kind": "text", "maxLength": 600, "placeholder": "My goal is... It matters because... My first step is..." },
+      "edges": [{ "target": "n_skill8_progress", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_skill8_progress": {
+      "id": "n_skill8_progress",
+      "type": "intervention",
+      "label": "Skill 8: Celebrating Progress",
+      "week": 5, "session": 2,
+      "deliver_after_hours": 72,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1552673597-e3cd6747a996?w=800",
+            "alt": "Person celebrating at a finish line — joy in progress and achievement"
+          },
+          {
+            "type": "text",
+            "body": "## The Progress Principle\n\nResearcher Teresa Amabile found that the single greatest driver of positive emotions at work (and in life) is **making progress on meaningful work** — even small progress on a difficult day.\n\nThis means:\n- Celebrating every step, not just the destination\n- Tracking progress visibly so you can *see* movement\n- Acknowledging what you've already done, not just what remains\n\nSince setting your goal a few days ago — have you taken that first step, or made any movement toward it?\n\nWhat progress, however small, can you acknowledge today?"
+          }
+        ]
+      },
+      "response": { "kind": "text", "maxLength": 400, "placeholder": "Progress so far..." },
+      "edges": [{ "target": "n_skill8_wrap", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_skill8_wrap": {
+      "id": "n_skill8_wrap",
+      "type": "intervention",
+      "label": "Skill 8: Wrap-Up",
+      "week": 5, "session": 3,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "text",
+        "body": "## Skill 8 Complete ✓\n\nYou now have a meaningful goal with an approach orientation — and the understanding that the *journey* toward it, not just the arrival, is where wellbeing lives.\n\nKeep the goal alive: check in on it weekly, celebrate small progress, and use your personal strengths (Skill 7) to fuel it.\n\nOne more stop: **Positive Emotions Wrap-Up.** You'll consolidate everything you've learned, reflect on your growth, and build your personal positive emotions plan for going forward."
+      },
+      "response": { "kind": "none" },
+      "edges": [
+        { "target": "n_wrapup_review",  "condition": { "on": "consumed" }, "priority": 1 },
+        { "target": "n_wrapup_review",  "condition": { "on": "timeout", "after_seconds": 300 }, "priority": 2 }
+      ]
+    },
+
+    "_comment_week6_wrapup": "── Week 6: Wrap-Up ─────────────────────────────────────",
+
+    "n_wrapup_review": {
+      "id": "n_wrapup_review",
+      "type": "intervention",
+      "label": "Wrap-Up: Reviewing the Journey",
+      "week": 6, "session": 1,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800",
+            "alt": "Person looking out over a landscape at golden hour — reflection and perspective"
+          },
+          {
+            "type": "text",
+            "body": "# Positive Emotions — Wrap-Up\n\n## Looking Back\n\nYou've completed a 6-week journey through eight evidence-based positive psychology skills:\n\n1. **Noticing Positive Events** — Training your attention toward the good\n2. **Savouring** — Lingering in positive moments to extract full value\n3. **Gratitude** — Appreciating what is good in your life\n4. **Mindfulness** — Returning to the present moment with openness\n5. **Positive Reappraisal** — Finding meaning and growth in difficulty\n6. **Self-Compassion** — Treating yourself with the kindness you'd give a friend\n7. **Personal Strengths** — Knowing and deploying what's best in you\n8. **Attainable Goals** — Using meaningful progress as a source of positive emotion\n\nThat's a significant body of practice."
+          }
+        ]
+      },
+      "response": { "kind": "choice", "options": [{ "value": "NEXT", "label": "Reflect on my journey" }] },
+      "edges": [{ "target": "n_wrapup_baseline_compare", "condition": { "on": "response_match", "value": "NEXT" }, "priority": 1 }]
+    },
+
+    "n_wrapup_baseline_compare": {
+      "id": "n_wrapup_baseline_compare",
+      "type": "intervention",
+      "label": "Wrap-Up: Baseline Comparison",
+      "week": 6, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "At the very start of this journey, you rated how often you experience positive emotions in a typical week.\n\nNow, six weeks on:\n\n**How often are you experiencing positive emotions now?**"
+      },
+      "response": {
+        "kind": "scale",
+        "min": 0, "max": 10,
+        "labels": { "0": "Rarely / never", "5": "Sometimes", "10": "Very often" }
+      },
+      "edges": [
+        { "target": "n_wrapup_improvement", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }
+      ]
+    },
+
+    "n_wrapup_improvement": {
+      "id": "n_wrapup_improvement",
+      "type": "intervention",
+      "label": "Wrap-Up: Acknowledging Growth",
+      "week": 6, "session": 1,
+      "content": {
+        "type": "text",
+        "body": "Whether your score moved significantly or not, take a moment to genuinely acknowledge what you've done:\n\n**You spent six weeks practising skills that most people never encounter.** You turned up. You reflected. You tried things that may have felt unfamiliar or even uncomfortable.\n\nThat matters.\n\nWhat has been the most personally meaningful skill or insight from this journey?"
+      },
+      "response": { "kind": "text", "maxLength": 500, "placeholder": "The thing that resonated most was..." },
+      "edges": [{ "target": "n_wrapup_plan", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_wrapup_plan": {
+      "id": "n_wrapup_plan",
+      "type": "intervention",
+      "label": "Wrap-Up: Your Going-Forward Plan",
+      "week": 6, "session": 2,
+      "deliver_after_hours": 48,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800",
+            "alt": "Open notebook on a wooden desk — writing a plan"
+          },
+          {
+            "type": "text",
+            "body": "## Your Personal Positive Emotions Plan\n\nResearch shows wellbeing skills need continued practice to sustain their effects. The goal now is to weave your favourite skills into daily and weekly life as sustainable habits.\n\n**Review the 8 skills one last time and choose:**\n\n- **2 daily habits** (e.g. morning gratitude + evening Three Good Things)\n- **1 weekly practice** (e.g. using a strength in a new way each week)\n- **1 monthly intention** (e.g. revisiting positive reappraisal when something hard happens)\n\nWrite your personal going-forward plan:"
+          }
+        ]
+      },
+      "response": { "kind": "text", "maxLength": 800, "placeholder": "My daily habits:\n1.\n2.\n\nMy weekly practice:\n\nMy monthly intention:" },
+      "edges": [{ "target": "n_wrapup_final", "condition": { "on": "response_match", "value": "*" }, "priority": 1 }]
+    },
+
+    "n_wrapup_final": {
+      "id": "n_wrapup_final",
+      "type": "intervention",
+      "label": "Wrap-Up: Final Message",
+      "week": 6, "session": 3,
+      "deliver_after_hours": 24,
+      "content": {
+        "type": "composite",
+        "blocks": [
+          {
+            "type": "image",
+            "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800",
+            "alt": "Sunrise over mountains — a new beginning"
+          },
+          {
+            "type": "text",
+            "body": "# The Journey Continues\n\nPositive emotions are not a destination — they're a way of moving through the world.\n\nThey're available to you in ordinary moments: in a cup of tea, in a kind exchange, in a few minutes of quiet attention, in the progress you make on something that matters to you.\n\nYou now have eight skills — a whole toolkit — to help you notice, build, and sustain them.\n\nThank you for showing up, for reflecting honestly, and for investing in your own flourishing.\n\n*'The good life is best construed as a matrix that includes happiness, occasional sadness, a sense of purpose, playfulness, and psychological flexibility — as well as autonomy, mastery, and belonging.'*\n— Robert Biswas-Diener\n\n**Well done. Take good care of yourself.**"
+          }
+        ]
+      },
+      "response": {
+        "kind": "choice",
+        "options": [
+          { "value": "COMPLETE", "label": "I'm taking this with me" }
+        ]
+      },
+      "edges": [
+        { "target": "n_end_completed", "condition": { "on": "response_match", "value": "COMPLETE" }, "priority": 1 },
+        { "target": "n_end_completed", "condition": { "on": "timeout", "after_seconds": 604800 },   "priority": 9 }
+      ]
+    },
+
+    "_comment_terminals": "── Terminal Nodes ───────────────────────────────────────",
+
+    "n_end_completed":  { "id": "n_end_completed",  "type": "end", "outcome": "completed",        "label": "Journey completed successfully" },
+    "n_end_deferred":   { "id": "n_end_deferred",   "type": "end", "outcome": "deferred",          "label": "User chose to start later" },
+    "n_end_abandoned":  { "id": "n_end_abandoned",  "type": "end", "outcome": "abandoned_timeout", "label": "No engagement for extended period" }
+  }
+}
