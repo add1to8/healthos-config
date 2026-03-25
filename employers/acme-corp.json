@@ -4,19 +4,23 @@
   "enabled_biometrics": [
     "heart_rate", "steps", "sleep", "flights_climbed",
     "hrv", "blood_pressure", "glucose", "body_temperature",
+    "weight", "body_composition",
     "stress_index", "sleep_debt", "activity_withdrawal",
     "recovery_readiness", "mood_risk"
   ],
   "enabled_journeys": [
     "positive-emotions", "sleep-foundations",
-    "stress-resilience", "active-living"
+    "stress-resilience", "active-living",
+    "active-while-losing", "sleep-on-semaglutide",
+    "sustain-after-glp1"
   ],
   "onboarding_goals": [
     "Better sleep", "Reduce stress", "Get fitter",
-    "Heart health", "Manage diabetes", "Increase energy"
+    "Heart health", "Manage weight", "Manage diabetes",
+    "Increase energy", "GLP-1 support"
   ],
   "features": {
-    "protein_goal": false,
+    "protein_goal": true,
     "daily_checkin_hour": 20
   }
 }
