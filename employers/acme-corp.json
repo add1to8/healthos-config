@@ -21,6 +21,7 @@
   ],
   "features": {
     "protein_goal": true,
-    "daily_checkin_hour": 20
+    "daily_checkin_hour": 20,
+    "today_card_metrics": ["steps", "sleep", "weight"]
   }
 }
