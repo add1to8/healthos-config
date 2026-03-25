@@ -1,0 +1,22 @@
+{
+  "employer_id": "acme-corp",
+  "display_name": "Acme Corporation",
+  "enabled_biometrics": [
+    "heart_rate", "steps", "sleep", "flights_climbed",
+    "hrv", "blood_pressure", "glucose", "body_temperature",
+    "stress_index", "sleep_debt", "activity_withdrawal",
+    "recovery_readiness", "mood_risk"
+  ],
+  "enabled_journeys": [
+    "positive-emotions", "sleep-foundations",
+    "stress-resilience", "active-living"
+  ],
+  "onboarding_goals": [
+    "Better sleep", "Reduce stress", "Get fitter",
+    "Heart health", "Manage diabetes", "Increase energy"
+  ],
+  "features": {
+    "protein_goal": false,
+    "daily_checkin_hour": 20
+  }
+}
