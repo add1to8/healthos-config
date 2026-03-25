@@ -169,8 +169,9 @@
 
         async function loadAggregates() {
             try {
+                const debugParam = window.location.search.includes('debug=true') ? '&debug=true' : '';
                 const resp = await fetch(
-                    `${SUPABASE_URL}/functions/v1/dashboard?employer_id=${encodeURIComponent(currentEmployer)}`,
+                    `${SUPABASE_URL}/functions/v1/dashboard?employer_id=${encodeURIComponent(currentEmployer)}${debugParam}`,
                     {
                         headers: {
                             'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
