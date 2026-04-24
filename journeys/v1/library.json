@@ -9237,5 +9237,971 @@
         "outcome": "deferred"
       }
     }
+  },
+  {
+    "id": "jrn_osteoporosis_bone_health_v1",
+    "version": "1.0",
+    "name": "Bone Health and Osteoporosis",
+    "description": "A 4-week programme combining education, weight-bearing exercise, nutrition guidance, and fall prevention for people living with osteoporosis or osteopenia",
+    "entry": "n_welcome",
+    "metadata": {
+      "created_at": "2026-04-24",
+      "updated_at": "2026-04-24",
+      "author": "Intervengine",
+      "clinical_ref": "Royal Osteoporosis Society guidelines, NICE CG146, IOF recommendations, Sherrington et al. 2019 (exercise meta-analysis), Howe et al. 2011 Cochrane review",
+      "duration_weeks": 4,
+      "tags": [
+        "osteoporosis",
+        "osteopenia",
+        "bone-health",
+        "falls-prevention",
+        "weight-bearing-exercise",
+        "calcium",
+        "vitamin-d",
+        "medication-adherence"
+      ],
+      "screening": "phq9",
+      "audience": "Adults diagnosed with osteoporosis or osteopenia, or at elevated fracture risk"
+    },
+    "schedule": {
+      "total_weeks": 4,
+      "sessions_per_week": 2,
+      "preferred_spacing_hours": 72
+    },
+    "nodes": {
+      "n_welcome": {
+        "id": "n_welcome",
+        "type": "intervention",
+        "label": "Welcome",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 1,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "image",
+              "url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+              "alt": "Person walking outdoors in nature"
+            },
+            {
+              "type": "text",
+              "body": "**Welcome to Bone Health.**\n\nA diagnosis of osteoporosis or low bone density can feel unsettling. But here's what the research consistently shows: there is a lot you can do. Exercise, nutrition, understanding your medication, and knowing how to protect yourself from falls \u2014 these aren't vague lifestyle advice. They are the four pillars that make a measurable difference to fracture risk and quality of life.\n\nOver the next four weeks, we'll work through each one \u2014 with short sessions, practical tools, and a few videos you can follow along with.\n\nNothing here replaces your GP, rheumatologist, or bone clinic. It sits alongside."
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_understanding",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_understanding": {
+        "id": "n_understanding",
+        "type": "intervention",
+        "label": "Understanding bone health",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 1,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "text",
+              "body": "**What's actually happening in your bones.**\n\nBone is living tissue. Your body constantly removes old bone (resorption) and builds new bone (formation). In osteoporosis, resorption outpaces formation \u2014 bones become less dense, more porous, and more fragile.\n\nThree things worth knowing:\n\n- **It's silent.** You can't feel bone thinning. Most people discover it after a fracture or a DEXA scan.\n- **T-scores are relative.** A T-score of -2.5 means your bone density is 2.5 standard deviations below a healthy 30-year-old's peak. It doesn't mean your bones are about to break.\n- **Fracture risk is what matters.** Your FRAX score (which your clinic can calculate) combines bone density with age, weight, smoking, alcohol, family history, and prior fractures. That's the number that guides treatment decisions."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/watch?v=z_HGQKVMRaw",
+              "label": "Understanding osteoporosis \u2014 Royal Osteoporosis Society (3 min)"
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_baseline_q1",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_baseline_q1": {
+        "id": "n_baseline_q1",
+        "type": "intervention",
+        "label": "Baseline: current activity",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 1,
+        "content": {
+          "type": "text",
+          "body": "Before we start \u2014 a few quick questions to understand where you are right now.\n\nHow many days per week do you currently do weight-bearing exercise (walking, dancing, gardening, gym, climbing stairs)?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 7,
+          "labels": {
+            "0": "none",
+            "7": "every day"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_baseline_q2",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_baseline_q2": {
+        "id": "n_baseline_q2",
+        "type": "intervention",
+        "label": "Baseline: falls concern",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 1,
+        "content": {
+          "type": "text",
+          "body": "How concerned are you about falling?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 10,
+          "labels": {
+            "0": "not concerned at all",
+            "10": "extremely concerned"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_baseline_q3",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_baseline_q3": {
+        "id": "n_baseline_q3",
+        "type": "intervention",
+        "label": "Baseline: confidence",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 1,
+        "content": {
+          "type": "text",
+          "body": "How confident do you feel that you understand your osteoporosis treatment and what you can do to manage it?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 10,
+          "labels": {
+            "0": "not confident at all",
+            "10": "very confident"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_baseline_q4",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_baseline_q4": {
+        "id": "n_baseline_q4",
+        "type": "intervention",
+        "label": "Baseline: emotional impact",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 1,
+        "content": {
+          "type": "text",
+          "body": "How much does osteoporosis affect you emotionally \u2014 worry, frustration, feeling fragile, avoidance of activities?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 10,
+          "labels": {
+            "0": "not at all",
+            "10": "significantly"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_baseline_summary",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_baseline_summary": {
+        "id": "n_baseline_summary",
+        "type": "intervention",
+        "label": "Baseline summary",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 1,
+        "content": {
+          "type": "text",
+          "body": "Thank you. Here's your starting picture:\n\n- Activity level: {{journey_choice_n_baseline_q1}}/7 days per week\n- Falls concern: {{journey_choice_n_baseline_q2}}/10\n- Treatment confidence: {{journey_choice_n_baseline_q3}}/10\n- Emotional impact: {{journey_choice_n_baseline_q4}}/10\n\nWe'll check these again at the end to see what shifts. Next session, we start with the single most impactful thing you can do: exercise."
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_exercise_intro",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_exercise_intro": {
+        "id": "n_exercise_intro",
+        "type": "intervention",
+        "label": "Exercise: why it matters",
+        "deliver_after_hours": 72,
+        "week": 1,
+        "session": 2,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "image",
+              "url": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800",
+              "alt": "Older adult exercising with light weights"
+            },
+            {
+              "type": "text",
+              "body": "**Exercise is the closest thing to a bone medicine you can do yourself.**\n\nThe evidence is clear: weight-bearing and resistance exercise reduces fracture risk, improves balance (reducing falls), builds muscle that protects bones, and improves confidence and mood.\n\nTwo types matter most:\n\n1. **Weight-bearing impact:** walking briskly, dancing, stair climbing, light jogging (if your bone density allows). The impact stimulates bone formation.\n2. **Resistance/strength:** lifting weights, resistance bands, bodyweight exercises. Builds the muscle that supports and protects your skeleton.\n\nBalance training is the third pillar \u2014 especially for falls prevention. We'll cover that in Week 3.\n\nThe Royal Osteoporosis Society recommends at least 50 moderate impacts per day (like brisk walking steps or heel drops) and strength training 2-3 times per week."
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_exercise_video",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_exercise_video": {
+        "id": "n_exercise_video",
+        "type": "intervention",
+        "label": "Exercise: starter routine",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 2,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "text",
+              "body": "**A 10-minute starter routine.**\n\nThis video is designed for people with osteoporosis \u2014 all exercises are safe for low bone density. Do what feels manageable. If anything causes pain, stop that movement.\n\nYou'll need a chair for balance support. No other equipment."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/watch?v=FhRMbCnCBBY",
+              "label": "10-minute osteoporosis-safe exercise routine"
+            },
+            {
+              "type": "text",
+              "body": "**After watching:** try the routine once this week. Even a partial attempt counts. We'll build from here."
+            }
+          ]
+        },
+        "response": {
+          "kind": "choice",
+          "options": [
+            {
+              "value": "WILL_TRY",
+              "label": "I'll try it this week"
+            },
+            {
+              "value": "ALREADY_ACTIVE",
+              "label": "I already exercise regularly"
+            },
+            {
+              "value": "CONCERNED",
+              "label": "I'm worried about hurting myself"
+            }
+          ]
+        },
+        "edges": [
+          {
+            "target": "n_exercise_safety",
+            "condition": {
+              "on": "response_match",
+              "value": "CONCERNED"
+            },
+            "priority": 1
+          },
+          {
+            "target": "n_nutrition_intro",
+            "condition": {
+              "on": "response_match",
+              "value": "WILL_TRY"
+            },
+            "priority": 2
+          },
+          {
+            "target": "n_nutrition_intro",
+            "condition": {
+              "on": "response_match",
+              "value": "ALREADY_ACTIVE"
+            },
+            "priority": 3
+          }
+        ]
+      },
+      "n_exercise_safety": {
+        "id": "n_exercise_safety",
+        "type": "intervention",
+        "label": "Exercise safety reassurance",
+        "deliver_after_hours": 0,
+        "week": 1,
+        "session": 2,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "text",
+              "body": "**That concern is completely valid \u2014 and common.**\n\nMany people with osteoporosis reduce activity out of fear of fracture. But the research is consistent: inactivity weakens bones and muscles faster than careful exercise strengthens them. The risk of not exercising is greater than the risk of exercising.\n\nSafe exercise for osteoporosis:\n- **Do:** walking, heel drops, wall push-ups, seated exercises, gentle resistance bands\n- **Avoid:** forward bending under load (heavy deadlifts, loaded sit-ups), high-impact twisting, exercises that round the spine\n- **Check with your GP or physio** if you've had a recent fracture or have very low T-scores (below -3.5)\n\nStart with the seated exercises from the video. Build gradually. Your body will tell you what's manageable."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/watch?v=3Dlz1m1sDjY",
+              "label": "Safe seated exercises for osteoporosis \u2014 NHS (5 min)"
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_nutrition_intro",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_nutrition_intro": {
+        "id": "n_nutrition_intro",
+        "type": "intervention",
+        "label": "Nutrition: calcium and vitamin D",
+        "deliver_after_hours": 72,
+        "week": 2,
+        "session": 1,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "image",
+              "url": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800",
+              "alt": "Healthy food including dairy, leafy greens, and nuts"
+            },
+            {
+              "type": "text",
+              "body": "**Calcium and vitamin D \u2014 the building blocks.**\n\nYour bones need two things from your diet:\n\n**Calcium** (target: 700-1000 mg/day)\n- Dairy: a glass of milk = ~300 mg, yoghurt = ~200 mg, cheese = ~200 mg per 30g\n- Non-dairy: fortified plant milks, tofu, tinned sardines/salmon (with bones), kale, broccoli, almonds\n- Most people get enough from 3 portions of dairy per day. If you're dairy-free, you likely need a supplement.\n\n**Vitamin D** (target: 10 mcg / 400 IU daily, year-round)\n- Sunlight on skin is the main source \u2014 but in higher latitudes (UK, NZ, northern Europe) it's insufficient from October to March\n- Food sources are limited: oily fish, eggs, fortified cereals\n- The NHS and Royal Osteoporosis Society recommend a daily supplement for everyone over 50, and especially for people with osteoporosis\n\n**One important note:** calcium supplements should ideally be taken with food, and no more than 500 mg at a time (your body can't absorb more in one go)."
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_nutrition_check",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_nutrition_check": {
+        "id": "n_nutrition_check",
+        "type": "intervention",
+        "label": "Nutrition self-check",
+        "deliver_after_hours": 0,
+        "week": 2,
+        "session": 1,
+        "content": {
+          "type": "text",
+          "body": "Quick self-check: how many of these do you currently do?\n\n- Eat 3 portions of dairy (or calcium-rich alternatives) most days\n- Take a vitamin D supplement\n- Eat oily fish at least once a week\n- Limit caffeine to 3 cups/day (caffeine reduces calcium absorption)\n- Limit alcohol to 14 units/week"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 5,
+          "labels": {
+            "0": "none of these",
+            "5": "all of these"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_medication_intro",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_medication_intro": {
+        "id": "n_medication_intro",
+        "type": "intervention",
+        "label": "Medication adherence",
+        "deliver_after_hours": 72,
+        "week": 2,
+        "session": 2,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "text",
+              "body": "**Understanding your medication.**\n\nIf you've been prescribed osteoporosis medication, taking it correctly matters more than most people realise.\n\n**Bisphosphonates** (alendronate, risedronate, zoledronic acid) are the most common. They work by slowing bone resorption \u2014 giving formation a chance to catch up.\n\n- Oral bisphosphonates must be taken on an empty stomach, with a full glass of plain water, and you must stay upright for 30-60 minutes afterwards. This isn't optional \u2014 it prevents oesophageal irritation.\n- They take 12-18 months to show measurable bone density change on a DEXA scan. Stopping early loses the benefit.\n- Side effects are real but usually manageable. Jaw problems (osteonecrosis) are very rare \u2014 about 1 in 10,000-100,000 for oral bisphosphonates. Good dental hygiene reduces risk.\n\n**Denosumab** (Prolia) is an injection every 6 months. It must not be stopped without a plan \u2014 bone density drops rapidly after discontinuation.\n\nIf you're unsure about your medication, your GP or bone clinic can explain the specific benefits for your fracture risk."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/watch?v=D9K3HFnKBKA",
+              "label": "How to take bisphosphonates correctly \u2014 Royal Osteoporosis Society (2 min)"
+            }
+          ]
+        },
+        "response": {
+          "kind": "choice",
+          "options": [
+            {
+              "value": "ON_MEDS",
+              "label": "I take osteoporosis medication"
+            },
+            {
+              "value": "NOT_ON_MEDS",
+              "label": "I don't take any bone medication"
+            },
+            {
+              "value": "UNSURE",
+              "label": "I'm not sure / considering it"
+            }
+          ]
+        },
+        "edges": [
+          {
+            "target": "n_medication_adherence",
+            "condition": {
+              "on": "response_match",
+              "value": "ON_MEDS"
+            },
+            "priority": 1
+          },
+          {
+            "target": "n_falls_intro",
+            "condition": {
+              "on": "response_match",
+              "value": "NOT_ON_MEDS"
+            },
+            "priority": 2
+          },
+          {
+            "target": "n_falls_intro",
+            "condition": {
+              "on": "response_match",
+              "value": "UNSURE"
+            },
+            "priority": 3
+          }
+        ]
+      },
+      "n_medication_adherence": {
+        "id": "n_medication_adherence",
+        "type": "intervention",
+        "label": "Medication barriers",
+        "deliver_after_hours": 0,
+        "week": 2,
+        "session": 2,
+        "content": {
+          "type": "text",
+          "body": "What's the biggest challenge you face with taking your osteoporosis medication consistently?"
+        },
+        "response": {
+          "kind": "choice",
+          "options": [
+            {
+              "value": "FORGET",
+              "label": "I sometimes forget"
+            },
+            {
+              "value": "SIDE_EFFECTS",
+              "label": "Side effects bother me"
+            },
+            {
+              "value": "ROUTINE",
+              "label": "The empty stomach / staying upright routine is hard"
+            },
+            {
+              "value": "NO_ISSUE",
+              "label": "No issues \u2014 I take it reliably"
+            }
+          ]
+        },
+        "edges": [
+          {
+            "target": "n_medication_tips",
+            "condition": {
+              "on": "response_match",
+              "value": "FORGET"
+            },
+            "priority": 1
+          },
+          {
+            "target": "n_medication_tips",
+            "condition": {
+              "on": "response_match",
+              "value": "SIDE_EFFECTS"
+            },
+            "priority": 2
+          },
+          {
+            "target": "n_medication_tips",
+            "condition": {
+              "on": "response_match",
+              "value": "ROUTINE"
+            },
+            "priority": 3
+          },
+          {
+            "target": "n_falls_intro",
+            "condition": {
+              "on": "response_match",
+              "value": "NO_ISSUE"
+            },
+            "priority": 4
+          }
+        ]
+      },
+      "n_medication_tips": {
+        "id": "n_medication_tips",
+        "type": "intervention",
+        "label": "Medication practical tips",
+        "deliver_after_hours": 0,
+        "week": 2,
+        "session": 2,
+        "content": {
+          "type": "text",
+          "body": "**Practical tips that help:**\n\n**If you forget:** Set a weekly alarm (most bisphosphonates are weekly). Put the tablet next to your phone charger. Use VesnaOS reminders \u2014 say \"remind me to take alendronate on Monday mornings\".\n\n**If side effects bother you:** Stomach upset usually improves after the first few weeks. Taking the tablet with a full glass of water (not just a sip) and staying properly upright helps. If it persists, your GP can try a different bisphosphonate or switch to the annual infusion (zoledronic acid).\n\n**If the routine is hard:** Some people find it helpful to take it first thing when they wake up, then shower and get dressed during the 30-minute upright wait. It becomes automatic after a few weeks.\n\nIf you're still struggling after trying these, please talk to your bone clinic \u2014 there are alternatives."
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_falls_intro",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_falls_intro": {
+        "id": "n_falls_intro",
+        "type": "intervention",
+        "label": "Falls prevention",
+        "deliver_after_hours": 72,
+        "week": 3,
+        "session": 1,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "text",
+              "body": "**Preventing falls is preventing fractures.**\n\nMost osteoporotic fractures happen because of a fall, not because a bone spontaneously breaks. Reducing your fall risk is at least as important as building bone density.\n\nThree things that make the biggest difference:\n\n1. **Balance training** \u2014 tai chi, standing on one leg, heel-to-toe walking. The evidence for tai chi is particularly strong: it reduces falls by about 20%.\n2. **Home hazards** \u2014 loose rugs, poor lighting, trailing cables, slippery bathroom floors. A simple home walkthrough can catch the obvious ones.\n3. **Vision and footwear** \u2014 annual eye checks and well-fitting shoes with good grip. Bifocals increase fall risk on stairs \u2014 consider separate distance glasses for walking."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/watch?v=FJL_LbJkNaU",
+              "label": "Balance exercises for falls prevention \u2014 NHS (6 min)"
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_falls_home_check",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_falls_home_check": {
+        "id": "n_falls_home_check",
+        "type": "intervention",
+        "label": "Home safety check",
+        "deliver_after_hours": 0,
+        "week": 3,
+        "session": 1,
+        "content": {
+          "type": "text",
+          "body": "**Quick home safety check.**\n\nWalk through your home mentally (or actually) and count how many of these apply:\n\n- Loose rugs or mats without non-slip backing\n- Poor lighting on stairs or in hallways\n- Trailing cables or clutter on the floor\n- No grab rails in the bathroom\n- Slippery bath or shower floor\n- Items stored on high shelves that require stretching\n- Stairs without handrails\n\nHow many hazards did you identify?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 7,
+          "labels": {
+            "0": "none",
+            "7": "all of them"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_emotional_intro",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_emotional_intro": {
+        "id": "n_emotional_intro",
+        "type": "intervention",
+        "label": "Emotional wellbeing",
+        "deliver_after_hours": 72,
+        "week": 3,
+        "session": 2,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "image",
+              "url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800",
+              "alt": "Person in peaceful meditation by water"
+            },
+            {
+              "type": "text",
+              "body": "**Living with osteoporosis is not just physical.**\n\nResearch shows that people with osteoporosis frequently experience:\n- **Fear of fracture** \u2014 leading to activity avoidance, which paradoxically increases fracture risk\n- **Loss of confidence** \u2014 feeling fragile, avoiding social activities\n- **Anxiety about the future** \u2014 especially after a fracture or a concerning DEXA result\n- **Frustration** \u2014 the condition is invisible, others don't understand\n\nThese are normal responses to a real condition. They're not weakness, and they're not separate from your bone health \u2014 anxiety and low mood are associated with increased fall risk.\n\nOne approach that helps: **behavioural activation.** Instead of waiting until you feel confident to do something, you do a small version of it and let the confidence build from the experience.\n\nThe balance exercises from the last session are a perfect example. You didn't need to feel confident first \u2014 you just needed to try standing on one leg for 10 seconds."
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_emotional_reflection",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_emotional_reflection": {
+        "id": "n_emotional_reflection",
+        "type": "intervention",
+        "label": "Activity avoidance reflection",
+        "deliver_after_hours": 0,
+        "week": 3,
+        "session": 2,
+        "content": {
+          "type": "text",
+          "body": "**Is there something you've stopped doing or avoided because of osteoporosis?**\n\nIt could be anything: a sport, gardening, picking up grandchildren, travelling, dancing, yoga.\n\nWrite it down \u2014 we'll come back to it."
+        },
+        "response": {
+          "kind": "text",
+          "maxLength": 300,
+          "placeholder": "Something I've avoided..."
+        },
+        "edges": [
+          {
+            "target": "n_emotional_ladder",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_emotional_ladder": {
+        "id": "n_emotional_ladder",
+        "type": "intervention",
+        "label": "Graded return",
+        "deliver_after_hours": 0,
+        "week": 3,
+        "session": 2,
+        "content": {
+          "type": "text",
+          "body": "**A graded return.**\n\nTake what you wrote and build a small ladder:\n\n- **Smallest step** \u2014 something you could do this week that moves toward it, even slightly. (Example: if you stopped gardening, the smallest step might be sitting outside near the garden for 10 minutes.)\n- **Next step** \u2014 a slightly bigger version. (Standing in the garden, pulling a few weeds from a raised bed.)\n- **Bigger step** \u2014 closer to the full activity. (30 minutes of light gardening with a kneeling pad.)\n\nYou don't need to reach the top. The point is movement, not perfection."
+        },
+        "response": {
+          "kind": "text",
+          "maxLength": 400,
+          "placeholder": "Smallest step: ... Next step: ... Bigger step: ..."
+        },
+        "edges": [
+          {
+            "target": "n_strength_video",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_strength_video": {
+        "id": "n_strength_video",
+        "type": "intervention",
+        "label": "Week 4: Strength routine",
+        "deliver_after_hours": 72,
+        "week": 4,
+        "session": 1,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "text",
+              "body": "**Building strength \u2014 your long-term investment.**\n\nBy now you've started with weight-bearing exercise and balance work. This session adds the third component: resistance training.\n\nStrength training 2-3 times per week is associated with:\n- Increased bone density at the spine and hip\n- Reduced fall risk (stronger muscles catch you)\n- Better posture (reducing vertebral fracture risk)\n- Improved confidence in daily activities\n\nYou don't need a gym. Resistance bands, bodyweight exercises, or even carrying shopping bags count."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/watch?v=Ev6yE55kYGw",
+              "label": "Strength exercises for osteoporosis \u2014 with resistance band (12 min)"
+            },
+            {
+              "type": "text",
+              "body": "**Key safety points:**\n- Avoid rounding your back under load (no loaded sit-ups or toe touches)\n- Use a chair for balance support if needed\n- Start with lighter resistance and progress gradually\n- If you have spinal fractures, consult your physio before starting"
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_integration",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_integration": {
+        "id": "n_integration",
+        "type": "intervention",
+        "label": "Integration and recheck",
+        "deliver_after_hours": 72,
+        "week": 4,
+        "session": 2,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "image",
+              "url": "https://images.unsplash.com/photo-1500964757637-c85e8a162699?w=800",
+              "alt": "Sunrise over an open landscape"
+            },
+            {
+              "type": "text",
+              "body": "**Looking back over four weeks.**\n\nYou've covered:\n- What osteoporosis actually is (and isn't)\n- Weight-bearing and strength exercise \u2014 with video routines you can keep using\n- Calcium, vitamin D, and nutrition fundamentals\n- Medication adherence (if applicable)\n- Falls prevention and home safety\n- The emotional side \u2014 and a graded return to something you'd been avoiding\n\nLet's recheck where you are now."
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_recheck_q1",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_recheck_q1": {
+        "id": "n_recheck_q1",
+        "type": "intervention",
+        "label": "Recheck: activity",
+        "deliver_after_hours": 0,
+        "week": 4,
+        "session": 2,
+        "content": {
+          "type": "text",
+          "body": "How many days per week are you now doing weight-bearing exercise?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 7,
+          "labels": {
+            "0": "none",
+            "7": "every day"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_recheck_q2",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_recheck_q2": {
+        "id": "n_recheck_q2",
+        "type": "intervention",
+        "label": "Recheck: confidence",
+        "deliver_after_hours": 0,
+        "week": 4,
+        "session": 2,
+        "content": {
+          "type": "text",
+          "body": "How confident do you now feel about managing your bone health?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 10,
+          "labels": {
+            "0": "not confident at all",
+            "10": "very confident"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_recheck_q3",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_recheck_q3": {
+        "id": "n_recheck_q3",
+        "type": "intervention",
+        "label": "Recheck: emotional impact",
+        "deliver_after_hours": 0,
+        "week": 4,
+        "session": 2,
+        "content": {
+          "type": "text",
+          "body": "How much does osteoporosis affect you emotionally now?"
+        },
+        "response": {
+          "kind": "scale",
+          "min": 0,
+          "max": 10,
+          "labels": {
+            "0": "not at all",
+            "10": "significantly"
+          }
+        },
+        "edges": [
+          {
+            "target": "n_handoff",
+            "condition": {
+              "on": "response_match",
+              "value": "*"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_handoff": {
+        "id": "n_handoff",
+        "type": "intervention",
+        "label": "Handoff",
+        "deliver_after_hours": 0,
+        "week": 4,
+        "session": 2,
+        "content": {
+          "type": "composite",
+          "blocks": [
+            {
+              "type": "text",
+              "body": "**Your results:**\n\n- Activity: {{journey_choice_n_baseline_q1}} days/week at start, {{journey_choice_n_recheck_q1}} days/week now\n- Confidence: {{journey_choice_n_baseline_q3}}/10 at start, {{journey_choice_n_recheck_q2}}/10 now\n- Emotional impact: {{journey_choice_n_baseline_q4}}/10 at start, {{journey_choice_n_recheck_q3}}/10 now\n\n**Resources to keep using:**\n- The exercise videos from this programme \u2014 bookmark them\n- Royal Osteoporosis Society helpline: 0808 800 0035\n- Ask your GP about a FRAX assessment if you haven't had one\n- Request a falls risk assessment from your GP if you're over 65\n\nYour PHQ-9 wellbeing check is running now for a before-and-after comparison.\n\nThank you for showing up for four weeks. The work you've done here compounds over time."
+            }
+          ]
+        },
+        "response": {
+          "kind": "none"
+        },
+        "edges": [
+          {
+            "target": "n_end_completed",
+            "condition": {
+              "on": "consumed"
+            },
+            "priority": 1
+          }
+        ]
+      },
+      "n_end_completed": {
+        "id": "n_end_completed",
+        "type": "end",
+        "label": "End - completed",
+        "outcome": "completed"
+      },
+      "n_end_deferred": {
+        "id": "n_end_deferred",
+        "type": "end",
+        "label": "End - deferred",
+        "outcome": "deferred"
+      }
+    }
   }
 ]
